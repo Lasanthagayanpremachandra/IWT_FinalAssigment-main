@@ -32,29 +32,38 @@ const connectDB = async () => {
     try {
         const uri = process.env.MONGO_URI && process.env.MONGO_URI.trim();
 
-        if (uri) {
-            try {
-                await mongoose.connect(uri);
-                await mongoose.connection.db.admin().ping();
-                console.log("MongoDB Connected");
-                await initializeAdmin();
-                return;
-            } catch (atlasError) {
-                console.warn("Atlas connection failed, retrying with local in-memory MongoDB:", atlasError.message);
+        if (!uri) {
+            throw new Error('MONGO_URI is missing. Add it to backend/.env');
+        }
+
+        try {
+            await mongoose.connect(uri);
+            await mongoose.connection.db.admin().ping();
+            console.log('MongoDB Connected to Atlas');
+            await initializeAdmin();
+            return;
+        } catch (atlasError) {
+            if (process.env.USE_LOCAL_DB === 'true') {
+                console.warn('Atlas connection failed, retrying with local in-memory MongoDB:', atlasError.message);
                 if (mongoose.connection.readyState !== 0) {
                     await mongoose.disconnect();
                 }
-            }
-        }
 
-        memoryServer = await MongoMemoryServer.create();
-        const localUri = memoryServer.getUri();
-        await mongoose.connect(localUri);
-        await mongoose.connection.db.admin().ping();
-        console.log("MongoDB Connected via local in-memory fallback");
-        await initializeAdmin();
+                memoryServer = await MongoMemoryServer.create();
+                const localUri = memoryServer.getUri();
+                await mongoose.connect(localUri);
+                await mongoose.connection.db.admin().ping();
+                console.log('MongoDB Connected via local in-memory fallback');
+                await initializeAdmin();
+                return;
+            }
+
+            console.error('Atlas connection failed. Fix the Atlas URI or whitelist IP.');
+            console.error(atlasError.message);
+            process.exit(1);
+        }
     } catch (error) {
-        console.error("Database connection failed:", error);
+        console.error('Database connection failed:', error);
         process.exit(1);
     }
 };
