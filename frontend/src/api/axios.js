@@ -5,7 +5,7 @@ import { Platform } from 'react-native';
 
 const getApiUrl = () => {
     if (Platform.OS === 'web') {
-        return 'http://localhost:5001/api';
+        return process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5001/api';
     }
 
     const hostUri = Constants.expoConfig?.hostUri || Constants.manifest2?.extra?.expoGo?.debuggerHost;
