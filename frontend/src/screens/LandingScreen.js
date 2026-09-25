@@ -1,46 +1,38 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, StatusBar, SafeAreaView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
-const { width, height } = Dimensions.get('window');
+import { SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const LandingScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle="light-content" />
-            
-            {/* Background Glows */}
-            <View style={[styles.glow, { top: -100, right: -100, backgroundColor: '#FFD30133' }]} />
-            <View style={[styles.glow, { bottom: -150, left: -150, backgroundColor: '#FFD3011A' }]} />
+
+            <View style={[styles.glow, { top: -100, right: -100, backgroundColor: '#5EEAD433' }]} />
+            <View style={[styles.glow, { bottom: -150, left: -150, backgroundColor: '#F7C87322' }]} />
 
             <View style={styles.content}>
-                {/* Logo Section */}
                 <View style={styles.logoContainer}>
                     <View style={styles.logoIcon}>
-                        <Ionicons name="flash" size={30} color="#000" />
+                        <Ionicons name="flash" size={30} color="#07131F" />
                     </View>
-                    <Text style={styles.logoText}>Event<Text style={{color: '#FFD301'}}>Pass</Text></Text>
+                    <Text style={styles.logoText}>Velora<Text style={{ color: '#5EEAD4' }}> Events</Text></Text>
                 </View>
 
-                {/* Hero Section */}
                 <View style={styles.heroSection}>
-                    <Text style={styles.heroTitle}>Discover {"\n"}Exclusive Events</Text>
-                    <Text style={styles.heroSubtitle}>Your premium gateway to the most exciting concerts, festivals, and workshops in the city.</Text>
+                    <Text style={styles.heroTitle}>{`Discover\nCurated Experiences`}</Text>
+                    <Text style={styles.heroSubtitle}>Premium events, elevated experiences, and unforgettable nights designed for modern audiences.</Text>
                 </View>
 
-                {/* Features Section */}
                 <View style={styles.features}>
                     <View style={styles.featureItem}>
-                        <Ionicons name="ticket-outline" size={24} color="#FFD301" />
-                        <Text style={styles.featureText}>Instant Tickets</Text>
+                        <Ionicons name="ticket-outline" size={24} color="#5EEAD4" />
+                        <Text style={styles.featureText}>Fast Booking</Text>
                     </View>
                     <View style={styles.featureItem}>
-                        <Ionicons name="shield-checkmark-outline" size={24} color="#FFD301" />
-                        <Text style={styles.featureText}>Secure Entry</Text>
+                        <Ionicons name="shield-checkmark-outline" size={24} color="#5EEAD4" />
+                        <Text style={styles.featureText}>Trusted Access</Text>
                     </View>
                 </View>
 
-                {/* Buttons Section */}
                 <View style={styles.footer}>
                     <TouchableOpacity 
                         style={styles.loginButton} 
@@ -56,7 +48,7 @@ const LandingScreen = ({ navigation }) => {
                         onPress={() => navigation.navigate('Register')}
                     >
                         <Text style={styles.registerButtonText}>Create New Account</Text>
-                        <Ionicons name="chevron-forward" size={18} color="#FFD301" />
+                        <Ionicons name="chevron-forward" size={18} color="#F7C873" />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -67,14 +59,14 @@ const LandingScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#000000',
+        backgroundColor: '#0B1020',
     },
     glow: {
         position: 'absolute',
         width: 300,
         height: 300,
         borderRadius: 150,
-        filter: 'blur(80px)', // Web only, for mobile we use opacity
+        opacity: 0.8,
     },
     content: {
         flex: 1,
@@ -88,13 +80,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logoIcon: {
-        backgroundColor: '#FFD301',
-        padding: 8,
-        borderRadius: 12,
+        backgroundColor: '#8B5CF6',
+        padding: 10,
+        borderRadius: 14,
         marginRight: 12,
     },
     logoText: {
-        color: '#FFFFFF',
+        color: '#F5F7FF',
         fontSize: 28,
         fontWeight: '900',
         letterSpacing: -1,
@@ -104,13 +96,13 @@ const styles = StyleSheet.create({
     },
     heroTitle: {
         color: '#FFFFFF',
-        fontSize: 48,
+        fontSize: 46,
         fontWeight: 'bold',
         lineHeight: 56,
         letterSpacing: -1,
     },
     heroSubtitle: {
-        color: '#A0A0A0',
+        color: '#B7C1D9',
         fontSize: 18,
         lineHeight: 28,
         marginTop: 20,
@@ -127,7 +119,7 @@ const styles = StyleSheet.create({
         gap: 10,
     },
     featureText: {
-        color: '#FFFFFF',
+        color: '#F5F7FF',
         fontSize: 14,
         fontWeight: '600',
     },
@@ -135,16 +127,15 @@ const styles = StyleSheet.create({
         marginTop: 'auto',
     },
     loginButton: {
-        backgroundColor: '#FFD301',
+        backgroundColor: '#8B5CF6',
         height: 65,
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center',
-        boxShadow: '0px 10px 20px rgba(255, 211, 1, 0.3)',
         elevation: 8,
     },
     loginButtonText: {
-        color: '#000000',
+        color: '#FFFFFF',
         fontSize: 18,
         fontWeight: 'bold',
         letterSpacing: 0.5,

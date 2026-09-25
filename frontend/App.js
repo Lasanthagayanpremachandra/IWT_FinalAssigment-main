@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
+import AdminPortal from './src/screens/AdminPortal';
 import LandingScreen from './src/screens/LandingScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import UserPortal from './src/screens/UserPortal';
-import AdminPortal from './src/screens/AdminPortal';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,8 +40,8 @@ export default function App() {
 
   if (!initialRoute) {
     return (
-      <View style={{ flex: 1, backgroundColor: '#000', justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator color="#FFD301" size="large" />
+      <View style={{ flex: 1, backgroundColor: '#0B1020', justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator color="#8B5CF6" size="large" />
       </View>
     );
   }

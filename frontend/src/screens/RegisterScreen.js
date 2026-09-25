@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { 
-    StyleSheet, Text, View, TextInput, TouchableOpacity, 
-    ActivityIndicator, KeyboardAvoidingView, ScrollView, Platform, SafeAreaView, StatusBar
-} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState } from 'react';
+import {
+    ActivityIndicator, KeyboardAvoidingView,
+    Platform, SafeAreaView,
+    ScrollView,
+    StatusBar,
+    StyleSheet, Text,
+    TextInput, TouchableOpacity,
+    View
+} from 'react-native';
 import axiosInstance from '../api/axios';
 import StatusModal from '../components/StatusModal';
 
@@ -60,16 +65,16 @@ const RegisterScreen = ({ navigation }) => {
 
                     <View style={styles.header}>
                         <Text style={styles.title}>Create Account</Text>
-                        <Text style={styles.subtitle}>Join us and start booking events</Text>
+                        <Text style={styles.subtitle}>Join Velora Events and start booking</Text>
                     </View>
 
                     <View style={styles.form}>
                         <View style={styles.inputContainer}>
-                            <Ionicons name="person-outline" size={20} color="#666" style={styles.inputIcon} />
+                            <Ionicons name="person-outline" size={20} color="#8AA0C5" style={styles.inputIcon} />
                             <TextInput 
                                 style={styles.input}
                                 placeholder="Full Name"
-                                placeholderTextColor="#666"
+                                placeholderTextColor="#7A86A7"
                                 value={name}
                                 onChangeText={setName}
                                 autoCapitalize="words"
@@ -77,11 +82,11 @@ const RegisterScreen = ({ navigation }) => {
                         </View>
 
                         <View style={styles.inputContainer}>
-                            <Ionicons name="mail-outline" size={20} color="#666" style={styles.inputIcon} />
+                            <Ionicons name="mail-outline" size={20} color="#8AA0C5" style={styles.inputIcon} />
                             <TextInput 
                                 style={styles.input}
                                 placeholder="Email Address"
-                                placeholderTextColor="#666"
+                                placeholderTextColor="#7A86A7"
                                 value={email}
                                 onChangeText={setEmail}
                                 keyboardType="email-address"
@@ -90,11 +95,11 @@ const RegisterScreen = ({ navigation }) => {
                         </View>
 
                         <View style={styles.inputContainer}>
-                            <Ionicons name="lock-closed-outline" size={20} color="#666" style={styles.inputIcon} />
+                            <Ionicons name="lock-closed-outline" size={20} color="#8AA0C5" style={styles.inputIcon} />
                             <TextInput 
                                 style={styles.input}
                                 placeholder="Password (min 6 chars)"
-                                placeholderTextColor="#666"
+                                placeholderTextColor="#7A86A7"
                                 value={password}
                                 onChangeText={setPassword}
                                 secureTextEntry
@@ -107,16 +112,16 @@ const RegisterScreen = ({ navigation }) => {
                             disabled={loading}
                         >
                             {loading ? (
-                                <ActivityIndicator color="#000" />
+                                <ActivityIndicator color="#07131F" />
                             ) : (
                                 <Text style={styles.registerBtnText}>Sign Up</Text>
                             )}
                         </TouchableOpacity>
 
                         <View style={styles.loginPrompt}>
-                            <Text style={{ color: '#888' }}>Already have an account? </Text>
+                            <Text style={{ color: '#B7C1D9' }}>Already have an account? </Text>
                             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                                <Text style={{ color: '#FFD301', fontWeight: 'bold' }}>Login</Text>
+                                <Text style={{ color: '#F7C873', fontWeight: 'bold' }}>Login</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -135,28 +140,27 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#000000' },
+    container: { flex: 1, backgroundColor: '#0B1020' },
     scrollContent: { padding: 25, flexGrow: 1 },
-    backButton: { width: 45, height: 45, borderRadius: 12, backgroundColor: '#1A1A1A', justifyContent: 'center', alignItems: 'center', marginTop: 10 },
+    backButton: { width: 45, height: 45, borderRadius: 12, backgroundColor: '#121B2E', justifyContent: 'center', alignItems: 'center', marginTop: 10, borderWidth: 1, borderColor: '#24314F' },
     header: { marginVertical: 40 },
     title: { fontSize: 32, fontWeight: 'bold', color: '#FFFFFF', marginBottom: 10 },
-    subtitle: { fontSize: 16, color: '#888' },
+    subtitle: { fontSize: 16, color: '#B7C1D9' },
     form: { flex: 1 },
-    inputContainer: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#111', borderRadius: 15, paddingHorizontal: 15, height: 60, marginBottom: 20, borderWidth: 1, borderColor: '#222' },
+    inputContainer: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#121B2E', borderRadius: 15, paddingHorizontal: 15, height: 60, marginBottom: 20, borderWidth: 1, borderColor: '#24314F' },
     inputIcon: { marginRight: 12 },
     input: { flex: 1, color: '#FFFFFF', fontSize: 16 },
     registerBtn: {
-        backgroundColor: '#FFD301',
+        backgroundColor: '#8B5CF6',
         height: 65,
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 10,
         marginBottom: 30,
-        boxShadow: '0px 10px 20px rgba(255, 211, 1, 0.2)',
-        elevation: 5,
+        elevation: 6,
     },
-    registerBtnText: { color: '#000000', fontSize: 18, fontWeight: 'bold' },
+    registerBtnText: { color: '#FFFFFF', fontSize: 18, fontWeight: 'bold' },
     loginPrompt: { flexDirection: 'row', justifyContent: 'center', marginTop: 10 },
 });
 

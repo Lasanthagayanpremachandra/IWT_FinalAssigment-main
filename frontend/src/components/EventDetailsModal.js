@@ -1,6 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, Text, Modal, TouchableOpacity, ScrollView, Image, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Dimensions, Image, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import axiosInstance from '../api/axios';
 
 const { height } = Dimensions.get('window');
@@ -81,31 +80,31 @@ const EventDetailsModal = ({ visible, onClose, event }) => {
 
 const styles = StyleSheet.create({
     modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.95)', justifyContent: 'center', alignItems: 'center' },
-    modalContainer: { width: '92%', height: '85%', backgroundColor: '#0A0A0A', borderRadius: 32, overflow: 'hidden', borderWidth: 1, borderColor: '#222' },
+    modalContainer: { width: '92%', height: '85%', backgroundColor: '#0B1020', borderRadius: 32, overflow: 'hidden', borderWidth: 1, borderColor: '#24314F' },
     imageContainer: { width: '100%', height: 250, position: 'relative' },
     headerImage: { width: '100%', height: '100%', resizeMode: 'cover' },
-    closeBtn: { position: 'absolute', top: 20, right: 20, width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFF', justifyContent: 'center', alignItems: 'center', elevation: 5 },
-    categoryBadge: { position: 'absolute', bottom: 20, left: 20, backgroundColor: '#FFD301', paddingHorizontal: 15, paddingVertical: 6, borderRadius: 10 },
-    categoryText: { color: '#000', fontWeight: 'bold', fontSize: 12 },
+    closeBtn: { position: 'absolute', top: 20, right: 20, width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFFFFF', justifyContent: 'center', alignItems: 'center', elevation: 5 },
+    categoryBadge: { position: 'absolute', bottom: 20, left: 20, backgroundColor: '#8B5CF6', paddingHorizontal: 15, paddingVertical: 6, borderRadius: 10 },
+    categoryText: { color: '#FFFFFF', fontWeight: 'bold', fontSize: 12 },
     scrollBody: { flex: 1 },
     contentPadding: { padding: 25 },
-    title: { color: '#FFF', fontSize: 28, fontWeight: 'bold', marginBottom: 20 },
+    title: { color: '#F8FAFC', fontSize: 28, fontWeight: 'bold', marginBottom: 20 },
     statsRow: { flexDirection: 'row', gap: 10, marginBottom: 30 },
-    statBox: { flex: 1, backgroundColor: '#1A1A1A', padding: 12, borderRadius: 15, alignItems: 'center', gap: 5, borderWidth: 1, borderColor: '#222' },
-    statLabel: { color: '#AAA', fontSize: 11, fontWeight: '600' },
+    statBox: { flex: 1, backgroundColor: '#121B2E', padding: 12, borderRadius: 15, alignItems: 'center', gap: 5, borderWidth: 1, borderColor: '#24314F' },
+    statLabel: { color: '#B7C1D9', fontSize: 11, fontWeight: '600' },
     section: { marginBottom: 30 },
-    sectionTitle: { color: '#FFD301', fontSize: 18, fontWeight: 'bold', marginBottom: 15 },
-    description: { color: '#888', fontSize: 15, lineHeight: 24 },
-    ticketCard: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#111', padding: 18, borderRadius: 20, marginBottom: 12, borderWidth: 1, borderColor: '#222' },
+    sectionTitle: { color: '#5EEAD4', fontSize: 18, fontWeight: 'bold', marginBottom: 15 },
+    description: { color: '#B7C1D9', fontSize: 15, lineHeight: 24 },
+    ticketCard: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#121B2E', padding: 18, borderRadius: 20, marginBottom: 12, borderWidth: 1, borderColor: '#24314F' },
     ticketPrimary: { gap: 4 },
-    ticketType: { color: '#FFF', fontSize: 16, fontWeight: 'bold' },
-    ticketPrice: { color: '#FFD301', fontSize: 14 },
+    ticketType: { color: '#F8FAFC', fontSize: 16, fontWeight: 'bold' },
+    ticketPrice: { color: '#5EEAD4', fontSize: 14 },
     ticketSecondary: { alignItems: 'flex-end', gap: 6 },
-    availability: { color: '#4CAF50', fontSize: 12, fontWeight: 'bold' },
+    availability: { color: '#34D399', fontSize: 12, fontWeight: 'bold' },
     statusDot: { width: 8, height: 8, borderRadius: 4 },
-    footer: { padding: 25, borderTopWidth: 1, borderTopColor: '#222' },
-    backBtn: { width: '100%', height: 55, borderRadius: 15, backgroundColor: '#1A1A1A', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#333' },
-    backBtnText: { color: '#FFF', fontSize: 16, fontWeight: 'bold' }
+    footer: { padding: 25, borderTopWidth: 1, borderTopColor: '#24314F' },
+    backBtn: { width: '100%', height: 55, borderRadius: 15, backgroundColor: '#121B2E', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#24314F' },
+    backBtnText: { color: '#F8FAFC', fontSize: 16, fontWeight: 'bold' }
 });
 
 export default EventDetailsModal;

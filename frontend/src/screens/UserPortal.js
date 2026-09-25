@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, StatusBar, SafeAreaView, ScrollView, Alert, ActivityIndicator, TextInput, Image } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useCallback, useEffect, useState } from 'react';
+import { ActivityIndicator, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import axiosInstance from '../api/axios';
-import EventCard from '../components/EventCard';
 import BookingModal from '../components/BookingModal';
+import EventCard from '../components/EventCard';
 import EventDetailsModal from '../components/EventDetailsModal';
 import StatusModal from '../components/StatusModal';
 
@@ -261,50 +261,44 @@ const UserPortal = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#000' },
+    container: { flex: 1, backgroundColor: '#0B1020' },
     scrollContent: { padding: 25, paddingBottom: 120 },
     header: { marginTop: 20, marginBottom: 30 },
-    greeting: { fontSize: 18, color: '#666' },
-    name: { fontSize: 32, fontWeight: 'bold', color: '#FFF' },
+    greeting: { fontSize: 18, color: '#A8B4CF' },
+    name: { fontSize: 32, fontWeight: 'bold', color: '#F8FAFC' },
     content: { flex: 1 },
-    promoCard: { backgroundColor: '#1A1A1A', padding: 25, borderRadius: 25, borderWidth: 1, borderColor: '#333', marginBottom: 30 },
-    cardTitle: { fontSize: 22, fontWeight: 'bold', color: '#FFD301', marginBottom: 10 },
-    cardSubtitle: { fontSize: 14, color: '#888', lineHeight: 20 },
-    sectionTitle: { color: '#FFF', fontSize: 20, fontWeight: 'bold', marginBottom: 20 },
-    searchBar: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#111', paddingHorizontal: 15, borderRadius: 15, height: 50, marginBottom: 25, borderWidth: 1, borderColor: '#222' },
-    searchInput: { flex: 1, marginLeft: 10, color: '#FFF' },
-    
-    // Booking Card Styles
+    promoCard: { backgroundColor: '#121B2E', padding: 25, borderRadius: 25, borderWidth: 1, borderColor: '#24314F', marginBottom: 30, elevation: 4 },
+    cardTitle: { fontSize: 22, fontWeight: 'bold', color: '#5EEAD4', marginBottom: 10 },
+    cardSubtitle: { fontSize: 14, color: '#B7C1D9', lineHeight: 20 },
+    sectionTitle: { color: '#F8FAFC', fontSize: 20, fontWeight: 'bold', marginBottom: 20 },
+    searchBar: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#121B2E', paddingHorizontal: 15, borderRadius: 15, height: 50, marginBottom: 25, borderWidth: 1, borderColor: '#24314F' },
+    searchInput: { flex: 1, marginLeft: 10, color: '#F8FAFC' },
     bookingList: { gap: 15 },
-    bookingCard: { backgroundColor: '#111', borderRadius: 20, padding: 20, borderWidth: 1, borderColor: '#222' },
+    bookingCard: { backgroundColor: '#121B2E', borderRadius: 20, padding: 20, borderWidth: 1, borderColor: '#24314F' },
     bookingHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 15 },
-    bookingId: { color: '#FFD301', fontSize: 16, fontWeight: 'bold' },
-    bookingDate: { color: '#666', fontSize: 12, marginTop: 4 },
+    bookingId: { color: '#5EEAD4', fontSize: 16, fontWeight: 'bold' },
+    bookingDate: { color: '#A8B4CF', fontSize: 12, marginTop: 4 },
     statusBadge: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 8 },
     statusText: { fontSize: 10, fontWeight: 'bold' },
     bookingEventInfo: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 15 },
-    bookingEventTitle: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
-    ticketDetails: { borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#222', paddingVertical: 12, marginBottom: 15 },
+    bookingEventTitle: { color: '#F8FAFC', fontSize: 18, fontWeight: 'bold' },
+    ticketDetails: { borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#24314F', paddingVertical: 12, marginBottom: 15 },
     ticketRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
-    ticketType: { color: '#888', fontSize: 14 },
-    ticketPrice: { color: '#FFF', fontSize: 14, fontWeight: '600' },
+    ticketType: { color: '#B7C1D9', fontSize: 14 },
+    ticketPrice: { color: '#F8FAFC', fontSize: 14, fontWeight: '600' },
     bookingFooter: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-    totalLabel: { color: '#666', fontSize: 14 },
-    totalValue: { color: '#FFD301', fontSize: 20, fontWeight: 'bold' },
-    emptyText: { color: '#444', textAlign: 'center', marginTop: 50, fontSize: 16 },
-
-    // Profile Styles
-    profileCard: { alignItems: 'center', backgroundColor: '#111', padding: 30, borderRadius: 25, marginBottom: 20, borderWidth: 1, borderColor: '#222' },
-    avatar: { width: 70, height: 70, borderRadius: 35, backgroundColor: '#FFD301', justifyContent: 'center', alignItems: 'center', marginBottom: 15 },
-    profileName: { color: '#FFF', fontSize: 24, fontWeight: 'bold' },
-    profileEmail: { color: '#666', fontSize: 14, marginTop: 5 },
-    menuItem: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#111', padding: 20, borderRadius: 18, marginBottom: 12, borderWidth: 1, borderColor: '#222' },
-    menuText: { flex: 1, color: '#FFF', fontSize: 16, fontWeight: '600', marginLeft: 15 },
-    logoutButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#111', height: 60, borderRadius: 18, marginTop: 20, borderWidth: 1, borderColor: '#f4433633', gap: 10 },
-    logoutText: { color: '#f44336', fontSize: 16, fontWeight: 'bold' },
-
-    // Bottom Nav
-    bottomNav: { position: 'absolute', bottom: 0, left: 0, right: 0, height: 85, backgroundColor: '#000', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', borderTopWidth: 1, borderTopColor: '#222', paddingBottom: 20 },
+    totalLabel: { color: '#A8B4CF', fontSize: 14 },
+    totalValue: { color: '#8B5CF6', fontSize: 20, fontWeight: 'bold' },
+    emptyText: { color: '#7A86A7', textAlign: 'center', marginTop: 50, fontSize: 16 },
+    profileCard: { alignItems: 'center', backgroundColor: '#121B2E', padding: 30, borderRadius: 25, marginBottom: 20, borderWidth: 1, borderColor: '#24314F' },
+    avatar: { width: 70, height: 70, borderRadius: 35, backgroundColor: '#8B5CF6', justifyContent: 'center', alignItems: 'center', marginBottom: 15 },
+    profileName: { color: '#F8FAFC', fontSize: 24, fontWeight: 'bold' },
+    profileEmail: { color: '#A8B4CF', fontSize: 14, marginTop: 5 },
+    menuItem: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#121B2E', padding: 20, borderRadius: 18, marginBottom: 12, borderWidth: 1, borderColor: '#24314F' },
+    menuText: { flex: 1, color: '#F8FAFC', fontSize: 16, fontWeight: '600', marginLeft: 15 },
+    logoutButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#121B2E', height: 60, borderRadius: 18, marginTop: 20, borderWidth: 1, borderColor: '#f4433633', gap: 10 },
+    logoutText: { color: '#F87171', fontSize: 16, fontWeight: 'bold' },
+    bottomNav: { position: 'absolute', bottom: 0, left: 0, right: 0, height: 85, backgroundColor: '#0B1020', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', borderTopWidth: 1, borderTopColor: '#24314F', paddingBottom: 20 },
     navItem: { alignItems: 'center', justifyContent: 'center', width: '33%' },
     navText: { fontSize: 10, marginTop: 6, fontWeight: '600' }
 });

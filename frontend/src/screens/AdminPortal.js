@@ -1,11 +1,19 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { 
-    StyleSheet, Text, View, TouchableOpacity, StatusBar, SafeAreaView, 
-    ScrollView, TextInput, Alert, ActivityIndicator, Platform 
-} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as ImagePicker from 'expo-image-picker';
+import { useCallback, useEffect, useState } from 'react';
+import {
+    ActivityIndicator,
+    Alert,
+    Platform,
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    StyleSheet, Text,
+    TextInput,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import axiosInstance from '../api/axios';
 
 // Components
@@ -590,24 +598,24 @@ const AdminPortal = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#000' },
-    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 25, backgroundColor: '#000' },
-    welcomeText: { color: '#888', fontSize: 14 },
-    adminName: { color: '#FFF', fontSize: 20, fontWeight: 'bold' },
-    logoutBtn: { padding: 10, backgroundColor: '#1A1A1A', borderRadius: 12 },
+    container: { flex: 1, backgroundColor: '#0B1020' },
+    header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 25, backgroundColor: '#0B1020' },
+    welcomeText: { color: '#A8B4CF', fontSize: 14 },
+    adminName: { color: '#F8FAFC', fontSize: 20, fontWeight: 'bold' },
+    logoutBtn: { padding: 10, backgroundColor: '#121B2E', borderRadius: 12, borderWidth: 1, borderColor: '#24314F' },
     content: { flex: 1, paddingHorizontal: 25 },
-    sectionTitle: { color: '#FFF', fontSize: 18, fontWeight: 'bold', marginBottom: 20 },
+    sectionTitle: { color: '#F8FAFC', fontSize: 18, fontWeight: 'bold', marginBottom: 20 },
     statsGrid: { flexDirection: 'row', gap: 10, flexWrap: 'wrap' },
-    statCard: { minWidth: '30%', flex: 1, backgroundColor: '#111', padding: 15, borderRadius: 20, borderWidth: 1, borderColor: '#222', alignItems: 'center' },
-    statNumber: { color: '#FFD301', fontSize: 22, fontWeight: 'bold' },
-    statLabel: { color: '#888', fontSize: 10, marginTop: 5, textAlign: 'center' },
-    searchBar: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#111', paddingHorizontal: 15, borderRadius: 15, height: 50, marginBottom: 20, borderWidth: 1, borderColor: '#222' },
-    searchInput: { flex: 1, marginLeft: 10, color: '#FFF' },
+    statCard: { minWidth: '30%', flex: 1, backgroundColor: '#121B2E', padding: 15, borderRadius: 20, borderWidth: 1, borderColor: '#24314F', alignItems: 'center' },
+    statNumber: { color: '#8B5CF6', fontSize: 22, fontWeight: 'bold' },
+    statLabel: { color: '#A8B4CF', fontSize: 10, marginTop: 5, textAlign: 'center' },
+    searchBar: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#121B2E', paddingHorizontal: 15, borderRadius: 15, height: 50, marginBottom: 20, borderWidth: 1, borderColor: '#24314F' },
+    searchInput: { flex: 1, marginLeft: 10, color: '#F8FAFC' },
     filterTabs: { flexDirection: 'row', gap: 10, marginBottom: 20 },
-    filterTab: { paddingVertical: 8, paddingHorizontal: 15, borderRadius: 20, backgroundColor: '#111' },
-    filterTabActive: { backgroundColor: '#FFD301' },
-    filterTabText: { color: '#888', fontSize: 12, fontWeight: 'bold' },
-    filterTabTextActive: { color: '#000' },
+    filterTab: { paddingVertical: 8, paddingHorizontal: 15, borderRadius: 20, backgroundColor: '#121B2E', borderWidth: 1, borderColor: '#24314F' },
+    filterTabActive: { backgroundColor: '#8B5CF6' },
+    filterTabText: { color: '#A8B4CF', fontSize: 12, fontWeight: 'bold' },
+    filterTabTextActive: { color: '#FFFFFF' },
     eventList: { flex: 1, marginBottom: 90 },
     fab: { 
         position: 'absolute', 
@@ -615,131 +623,119 @@ const styles = StyleSheet.create({
         right: 0, 
         width: 60, 
         height: 60, 
-        backgroundColor: '#FFD301', 
+        backgroundColor: '#8B5CF6', 
         borderRadius: 30, 
         justifyContent: 'center', 
         alignItems: 'center', 
-        elevation: 5, 
-        boxShadow: '0px 4px 8px rgba(255, 211, 1, 0.3)' 
+        elevation: 5
     },
     placeholderContent: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 100 },
-    placeholderText: { color: '#444', fontSize: 16, marginTop: 15 },
-    
-    // Modern Dashboard Styles
+    placeholderText: { color: '#7A86A7', fontSize: 16, marginTop: 15 },
     dashboardHero: { marginBottom: 25 },
-    dashboardSubtitle: { color: '#666', fontSize: 13, marginTop: 5 },
+    dashboardSubtitle: { color: '#A8B4CF', fontSize: 13, marginTop: 5 },
     featuredCard: { 
-        backgroundColor: '#111', 
+        backgroundColor: '#121B2E', 
         borderRadius: 24, 
         padding: 25, 
         flexDirection: 'row', 
         justifyContent: 'space-between', 
         alignItems: 'center',
         borderWidth: 1,
-        borderColor: '#FFD30122',
+        borderColor: '#8B5CF633',
         marginBottom: 20,
-        boxShadow: '0px 10px 20px rgba(255, 211, 1, 0.05)'
+        elevation: 4
     },
     featuredInfo: { flex: 1 },
-    featuredLabel: { color: '#888', fontSize: 14, fontWeight: '600' },
-    featuredValue: { color: '#FFF', fontSize: 36, fontWeight: 'bold', marginVertical: 5 },
+    featuredLabel: { color: '#A8B4CF', fontSize: 14, fontWeight: '600' },
+    featuredValue: { color: '#F8FAFC', fontSize: 36, fontWeight: 'bold', marginVertical: 5 },
     trendBadge: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-    trendText: { color: '#4CAF50', fontSize: 12, fontWeight: 'bold' },
-    featuredIconContainer: { width: 70, height: 70, borderRadius: 20, backgroundColor: '#FFD30110', justifyContent: 'center', alignItems: 'center' },
-    
+    trendText: { color: '#34D399', fontSize: 12, fontWeight: 'bold' },
+    featuredIconContainer: { width: 70, height: 70, borderRadius: 20, backgroundColor: '#8B5CF614', justifyContent: 'center', alignItems: 'center' },
     modernStatsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12, marginBottom: 30 },
     modernStatCard: { 
         width: '48%', 
-        backgroundColor: '#111', 
+        backgroundColor: '#121B2E', 
         borderRadius: 20, 
         padding: 18, 
         borderWidth: 1,
-        boxShadow: '0px 4px 10px rgba(0,0,0,0.3)'
+        borderColor: '#24314F'
     },
     statIconCircle: { width: 40, height: 40, borderRadius: 12, justifyContent: 'center', alignItems: 'center', marginBottom: 15 },
-    modernStatValue: { color: '#FFF', fontSize: 24, fontWeight: 'bold' },
-    modernStatLabel: { color: '#666', fontSize: 12, marginTop: 4, fontWeight: '500' },
-    
+    modernStatValue: { color: '#F8FAFC', fontSize: 24, fontWeight: 'bold' },
+    modernStatLabel: { color: '#A8B4CF', fontSize: 12, marginTop: 4, fontWeight: '500' },
     recentSection: { marginBottom: 100 },
-    subSectionTitle: { color: '#FFF', fontSize: 16, fontWeight: 'bold', marginBottom: 15 },
+    subSectionTitle: { color: '#F8FAFC', fontSize: 16, fontWeight: 'bold', marginBottom: 15 },
     activityCard: { 
         flexDirection: 'row', 
         alignItems: 'center', 
         gap: 15, 
-        backgroundColor: '#111', 
+        backgroundColor: '#121B2E', 
         padding: 18, 
         borderRadius: 18,
         borderWidth: 1,
-        borderColor: '#222'
+        borderColor: '#24314F'
     },
-    activityText: { color: '#888', fontSize: 13, flex: 1 },
-
-    // User Management Styles
+    activityText: { color: '#A8B4CF', fontSize: 13, flex: 1 },
     userCard: { 
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'space-between', 
-        backgroundColor: '#111', 
+        backgroundColor: '#121B2E', 
         padding: 15, 
         borderRadius: 18, 
         marginBottom: 12,
         borderWidth: 1,
-        borderColor: '#222'
+        borderColor: '#24314F'
     },
     userStatusContainer: { flexDirection: 'row', alignItems: 'center', gap: 10 },
     statusDot: { width: 10, height: 10, borderRadius: 5 },
-    dotActive: { backgroundColor: '#4CAF50', boxShadow: '0 0 8px #4CAF50' },
-    dotInactive: { backgroundColor: '#F44336', boxShadow: '0 0 8px #F44336' },
-
-    // Booking Manage Card Styles
-    bookingManageCard: { backgroundColor: '#111', borderRadius: 20, padding: 20, marginBottom: 15, borderWidth: 1, borderColor: '#222' },
+    dotActive: { backgroundColor: '#34D399' },
+    dotInactive: { backgroundColor: '#F87171' },
+    bookingManageCard: { backgroundColor: '#121B2E', borderRadius: 20, padding: 20, marginBottom: 15, borderWidth: 1, borderColor: '#24314F' },
     bookingManageHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 },
-    bookingManageId: { color: '#FFD301', fontSize: 16, fontWeight: 'bold' },
-    bookingManageUser: { color: '#666', fontSize: 12, marginTop: 2 },
-    userAvatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#FFD301', justifyContent: 'center', alignItems: 'center' },
-    avatarText: { color: '#000', fontWeight: 'bold', fontSize: 16 },
-    userName: { color: '#FFF', fontSize: 16, fontWeight: 'bold' },
-    userEmail: { color: '#666', fontSize: 12 },
+    bookingManageId: { color: '#5EEAD4', fontSize: 16, fontWeight: 'bold' },
+    bookingManageUser: { color: '#A8B4CF', fontSize: 12, marginTop: 2 },
+    userAvatar: { width: 40, height: 40, borderRadius: 20, backgroundColor: '#8B5CF6', justifyContent: 'center', alignItems: 'center' },
+    avatarText: { color: '#FFFFFF', fontWeight: 'bold', fontSize: 16 },
+    userName: { color: '#F8FAFC', fontSize: 16, fontWeight: 'bold' },
+    userEmail: { color: '#A8B4CF', fontSize: 12 },
     statusBtn: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 10, borderWidth: 1 },
     statusBtnText: { fontSize: 11, fontWeight: 'bold' },
-    deactivateBtn: { borderColor: '#f44336', backgroundColor: '#f4433615' },
-    activateBtn: { borderColor: '#4CAF50', backgroundColor: '#4CAF5015' },
-    deactivateText: { color: '#f44336' },
-    activateText: { color: '#4CAF50' },
-
-    // Modern User Card Styles
+    deactivateBtn: { borderColor: '#F8717133', backgroundColor: '#F8717115' },
+    activateBtn: { borderColor: '#34D39933', backgroundColor: '#34D39915' },
+    deactivateText: { color: '#F87171' },
+    activateText: { color: '#34D399' },
     modernUserCard: { 
-        backgroundColor: '#111', 
+        backgroundColor: '#121B2E', 
         borderRadius: 24, 
         padding: 20, 
         marginBottom: 16, 
         borderWidth: 1, 
-        borderColor: '#222',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.5)'
+        borderColor: '#24314F'
     },
     userCardMain: { flexDirection: 'row', alignItems: 'center', gap: 15, marginBottom: 20 },
     userAvatarContainer: { position: 'relative' },
     modernAvatar: { width: 56, height: 56, borderRadius: 18, justifyContent: 'center', alignItems: 'center' },
-    statusIndicator: { position: 'absolute', bottom: -2, right: -2, width: 16, height: 16, borderRadius: 8, borderWidth: 3, borderColor: '#111' },
+    statusIndicator: { position: 'absolute', bottom: -2, right: -2, width: 16, height: 16, borderRadius: 8, borderWidth: 3, borderColor: '#0B1020' },
     userMeta: { flex: 1, gap: 2 },
-    modernUserName: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
-    modernUserEmail: { color: '#666', fontSize: 13 },
-    roleBadge: { backgroundColor: '#1A1A1A', alignSelf: 'flex-start', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 6, marginTop: 4, borderWidth: 1, borderColor: '#333' },
-    roleText: { color: '#FFD301', fontSize: 9, fontWeight: '900', letterSpacing: 1 },
-    userCardActions: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: 15, borderTopWidth: 1, borderTopColor: '#222' },
+    modernUserName: { color: '#F8FAFC', fontSize: 18, fontWeight: 'bold' },
+    modernUserEmail: { color: '#A8B4CF', fontSize: 13 },
+    roleBadge: { backgroundColor: '#0B1020', alignSelf: 'flex-start', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 6, marginTop: 4, borderWidth: 1, borderColor: '#24314F' },
+    roleText: { color: '#5EEAD4', fontSize: 9, fontWeight: '900', letterSpacing: 1 },
+    userCardActions: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: 15, borderTopWidth: 1, borderTopColor: '#24314F' },
     statusInfo: { gap: 2 },
-    statusLabel: { color: '#444', fontSize: 10, fontWeight: 'bold' },
+    statusLabel: { color: '#7A86A7', fontSize: 10, fontWeight: 'bold' },
     statusValue: { fontSize: 12, fontWeight: '900', letterSpacing: 0.5 },
     modernStatusBtn: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 15, paddingVertical: 10, borderRadius: 12, borderWidth: 1 },
-    modernDeactivate: { borderColor: '#F4433622', backgroundColor: '#F4433610' },
-    modernActivate: { borderColor: '#4CAF5022', backgroundColor: '#4CAF5010' },
+    modernDeactivate: { borderColor: '#F8717133', backgroundColor: '#F8717110' },
+    modernActivate: { borderColor: '#34D39933', backgroundColor: '#34D39910' },
     modernBtnText: { fontSize: 13, fontWeight: 'bold' },
     emptyContainer: { alignItems: 'center', marginTop: 100, gap: 15 },
     statusBadge: { paddingHorizontal: 10, paddingVertical: 5, borderRadius: 8 },
     statusText: { fontSize: 10, fontWeight: 'bold' },
-    bookingManageEvent: { color: '#FFF', fontSize: 18, fontWeight: 'bold', marginBottom: 15 },
-    bookingManageFooter: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTopWidth: 1, borderTopColor: '#222', paddingTop: 15 },
-    bookingManagePrice: { color: '#FFF', fontSize: 18, fontWeight: 'bold' },
+    bookingManageEvent: { color: '#F8FAFC', fontSize: 18, fontWeight: 'bold', marginBottom: 15 },
+    bookingManageFooter: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTopWidth: 1, borderTopColor: '#24314F', paddingTop: 15 },
+    bookingManagePrice: { color: '#F8FAFC', fontSize: 18, fontWeight: 'bold' },
 });
 
 export default AdminPortal;

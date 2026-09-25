@@ -1,6 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const BottomNav = ({ activeTab, setActiveTab }) => {
     const navItems = [
@@ -42,12 +41,12 @@ const styles = StyleSheet.create({
         left: 0, 
         right: 0, 
         height: 80, 
-        backgroundColor: '#0A0A0A', 
+        backgroundColor: '#0B1020', 
         flexDirection: 'row', 
         justifyContent: 'space-around', 
         alignItems: 'center', 
         borderTopWidth: 1, 
-        borderTopColor: '#222', 
+        borderTopColor: '#24314F', 
         paddingBottom: 15 
     },
     navItem: { alignItems: 'center', gap: 4 },

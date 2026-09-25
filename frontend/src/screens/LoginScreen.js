@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, ActivityIndicator, KeyboardAvoidingView, Platform, ScrollView, StatusBar, SafeAreaView } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState } from 'react';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import axiosInstance from '../api/axios';
 import StatusModal from '../components/StatusModal';
 
@@ -66,11 +66,11 @@ const LoginScreen = ({ navigation }) => {
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Email Address</Text>
                             <View style={styles.inputWrapper}>
-                                <Ionicons name="mail-outline" size={20} color="#666" style={styles.inputIcon} />
+                                <Ionicons name="mail-outline" size={20} color="#8AA0C5" style={styles.inputIcon} />
                                 <TextInput
                                     style={styles.input}
                                     placeholder="name@example.com"
-                                    placeholderTextColor="#666"
+                                    placeholderTextColor="#7A86A7"
                                     value={email}
                                     onChangeText={setEmail}
                                     keyboardType="email-address"
@@ -82,17 +82,17 @@ const LoginScreen = ({ navigation }) => {
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Password</Text>
                             <View style={styles.inputWrapper}>
-                                <Ionicons name="lock-closed-outline" size={20} color="#666" style={styles.inputIcon} />
+                                <Ionicons name="lock-closed-outline" size={20} color="#8AA0C5" style={styles.inputIcon} />
                                 <TextInput
                                     style={styles.input}
                                     placeholder="••••••••"
-                                    placeholderTextColor="#666"
+                                    placeholderTextColor="#7A86A7"
                                     value={password}
                                     onChangeText={setPassword}
                                     secureTextEntry={!showPassword}
                                 />
                                 <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                                    <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={20} color="#FFD301" />
+                                    <Ionicons name={showPassword ? 'eye-off-outline' : 'eye-outline'} size={20} color="#5EEAD4" />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -108,7 +108,7 @@ const LoginScreen = ({ navigation }) => {
                             activeOpacity={0.8}
                         >
                             {loading ? (
-                                <ActivityIndicator color="#000" />
+                                <ActivityIndicator color="#07131F" />
                             ) : (
                                 <Text style={styles.loginBtnText}>Sign In</Text>
                             )}
@@ -135,51 +135,52 @@ const LoginScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#000000' },
+    container: { flex: 1, backgroundColor: '#0B1020' },
     scrollContent: { flexGrow: 1, padding: 30 },
     backButton: {
         width: 45,
         height: 45,
         borderRadius: 15,
-        backgroundColor: '#1A1A1A',
+        backgroundColor: '#121B2E',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 40,
+        borderWidth: 1,
+        borderColor: '#24314F',
     },
     header: { marginBottom: 40 },
     title: { fontSize: 36, fontWeight: 'bold', color: '#FFFFFF', marginBottom: 10 },
-    subtitle: { fontSize: 16, color: '#A0A0A0' },
+    subtitle: { fontSize: 16, color: '#B7C1D9' },
     form: { flex: 1 },
     inputGroup: { marginBottom: 25 },
     label: { color: '#FFFFFF', fontSize: 14, fontWeight: '600', marginBottom: 10, marginLeft: 4 },
     inputWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#1A1A1A',
+        backgroundColor: '#121B2E',
         borderRadius: 18,
         paddingHorizontal: 18,
         height: 65,
         borderWidth: 1,
-        borderColor: '#333',
+        borderColor: '#24314F',
     },
     inputIcon: { marginRight: 12 },
     input: { flex: 1, color: '#FFFFFF', fontSize: 16 },
     forgotPass: { alignSelf: 'flex-end', marginBottom: 35 },
-    forgotPassText: { color: '#FFD301', fontSize: 14, fontWeight: '600' },
+    forgotPassText: { color: '#5EEAD4', fontSize: 14, fontWeight: '600' },
     loginBtn: {
-        backgroundColor: '#FFD301',
+        backgroundColor: '#8B5CF6',
         height: 65,
         borderRadius: 18,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 30,
-        boxShadow: '0px 10px 20px rgba(255, 211, 1, 0.2)',
-        elevation: 5,
+        elevation: 6,
     },
-    loginBtnText: { color: '#000000', fontSize: 18, fontWeight: 'bold' },
+    loginBtnText: { color: '#FFFFFF', fontSize: 18, fontWeight: 'bold' },
     signupPrompt: { flexDirection: 'row', justifyContent: 'center', marginTop: 10 },
-    promptText: { color: '#A0A0A0', fontSize: 15 },
-    signupLink: { color: '#FFD301', fontSize: 15, fontWeight: 'bold' }
+    promptText: { color: '#B7C1D9', fontSize: 15 },
+    signupLink: { color: '#5EEAD4', fontSize: 15, fontWeight: 'bold' }
 });
 
 export default LoginScreen;

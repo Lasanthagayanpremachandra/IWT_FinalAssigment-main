@@ -1,6 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, Text, Modal, TouchableOpacity, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const StatusModal = ({ visible, type, title, message, onConfirm, onClose, confirmText = "OK", cancelText = "Cancel" }) => {
     const getIcon = () => {
@@ -48,15 +47,15 @@ const StatusModal = ({ visible, type, title, message, onConfirm, onClose, confir
 
 const styles = StyleSheet.create({
     overlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.85)', justifyContent: 'center', alignItems: 'center' },
-    modalContainer: { width: '85%', backgroundColor: '#111', borderRadius: 30, padding: 30, alignItems: 'center', borderWidth: 1, borderColor: '#222' },
+    modalContainer: { width: '85%', backgroundColor: '#121B2E', borderRadius: 30, padding: 30, alignItems: 'center', borderWidth: 1, borderColor: '#24314F' },
     iconContainer: { width: 90, height: 90, borderRadius: 45, justifyContent: 'center', alignItems: 'center', marginBottom: 20 },
-    title: { color: '#FFF', fontSize: 22, fontWeight: 'bold', marginBottom: 10, textAlign: 'center' },
-    message: { color: '#888', fontSize: 16, textAlign: 'center', lineHeight: 24, marginBottom: 30 },
+    title: { color: '#F8FAFC', fontSize: 22, fontWeight: 'bold', marginBottom: 10, textAlign: 'center' },
+    message: { color: '#B7C1D9', fontSize: 16, textAlign: 'center', lineHeight: 24, marginBottom: 30 },
     footer: { flexDirection: 'row', gap: 12, width: '100%' },
     confirmBtn: { flex: 1, height: 55, borderRadius: 15, justifyContent: 'center', alignItems: 'center' },
     confirmBtnText: { fontWeight: 'bold', fontSize: 16 },
-    cancelBtn: { flex: 1, height: 55, borderRadius: 15, backgroundColor: '#1A1A1A', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#333' },
-    cancelBtnText: { color: '#888', fontWeight: 'bold', fontSize: 16 }
+    cancelBtn: { flex: 1, height: 55, borderRadius: 15, backgroundColor: '#18243F', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#24314F' },
+    cancelBtnText: { color: '#B7C1D9', fontWeight: 'bold', fontSize: 16 }
 });
 
 export default StatusModal;

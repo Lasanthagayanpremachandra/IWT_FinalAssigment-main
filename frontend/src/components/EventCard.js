@@ -1,6 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import axiosInstance from '../api/axios';
 
 const { width } = Dimensions.get('window');
@@ -95,19 +94,18 @@ const EventCard = ({ event, eventType, onEdit, onDelete, onView, isAdmin = true,
 
 const styles = StyleSheet.create({
     eventCard: { 
-        backgroundColor: '#111', 
+        backgroundColor: '#121B2E', 
         borderRadius: 20, 
         marginBottom: 25, 
         overflow: 'hidden',
         borderWidth: 1, 
-        borderColor: '#222',
+        borderColor: '#24314F',
         elevation: 5,
-        boxShadow: '0px 10px 15px rgba(0,0,0,0.3)',
     },
     eventImage: { 
         width: '100%', 
         height: 180, 
-        backgroundColor: '#1A1A1A' 
+        backgroundColor: '#18243F' 
     },
     cardContent: { 
         padding: 20 
@@ -116,7 +114,7 @@ const styles = StyleSheet.create({
         marginBottom: 20 
     },
     eventTitle: { 
-        color: '#FFF', 
+        color: '#F8FAFC', 
         fontSize: 20, 
         fontWeight: 'bold', 
         marginBottom: 12 
@@ -130,14 +128,14 @@ const styles = StyleSheet.create({
         gap: 8 
     },
     eventDetailText: { 
-        color: '#AAA', 
+        color: '#B7C1D9', 
         fontSize: 14 
     },
     eventActions: { 
         flexDirection: 'row', 
         gap: 12,
         borderTopWidth: 1,
-        borderTopColor: '#222',
+        borderTopColor: '#24314F',
         paddingTop: 20
     },
     actionBtn: { 
@@ -150,20 +148,20 @@ const styles = StyleSheet.create({
         gap: 8
     },
     editBtn: { 
-        backgroundColor: '#FFD301' 
+        backgroundColor: '#8B5CF6' 
     },
     deleteBtn: { 
-        backgroundColor: '#1A1A1A',
+        backgroundColor: '#18243F',
         borderWidth: 1,
-        borderColor: '#333'
+        borderColor: '#24314F'
     },
     viewBtn: { 
-        backgroundColor: '#333' 
+        backgroundColor: '#24314F' 
     },
     btnText: { 
         fontSize: 14, 
         fontWeight: 'bold',
-        color: '#000'
+        color: '#FFFFFF'
     },
 });
 
