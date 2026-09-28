@@ -1,6 +1,7 @@
 const Event = require('../models/Event');
 const User = require('../models/User');
 const Booking = require('../models/Booking');
+const { storeEventImage } = require('../config/eventImageStorage');
 
 // Create Event
 exports.createEvent = async (req, res) => {
@@ -49,7 +50,7 @@ exports.createEvent = async (req, res) => {
             location,
             description,
             tickets: ticketsWithRemaining,
-            image: req.file ? `/uploads/${req.file.filename}` : null,
+            image: req.file ? await storeEventImage(req.file) : null,
             createdBy: req.user._id
         });
 
@@ -144,7 +145,7 @@ exports.updateEvent = async (req, res) => {
                 }
             });
         }
-        if (req.file) event.image = `/uploads/${req.file.filename}`;
+        if (req.file) event.image = await storeEventImage(req.file);
 
         await event.save();
         res.json(event);
